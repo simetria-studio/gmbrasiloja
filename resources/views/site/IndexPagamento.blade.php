@@ -6,7 +6,7 @@
             <div class="row justify-content-center">
                 <div class="form-group col-12 text-center"><h2>Vamos confirma os seus dados.</h2></div>
                 <div class="col-12 col-md-6">
-                    <form action="{{asset('atualizarPagamento')}}" method="post">
+                    <form action="{{url('atualizarPagamento')}}" method="post">
                         @csrf
                         <input type="hidden" name="type" value="{{$url}}">
                         <div class="row">
@@ -47,7 +47,7 @@
                             <li class="list-group-item">Celular: {{$address->phone2}}</li>
                             <li class="list-group-item">
                                 <a href="#" class="btn btn-block btn-primary" data-toggle="modal" data-target="#enderecos" data-dados="{{json_encode($address)}}"><i class="fa fa-user-cog"></i> Alterar Endereço</a>
-                                <form action="{{asset('atualizarPagamento')}}" method="post" class="my-2">
+                                <form action="{{url('atualizarPagamento')}}" method="post" class="my-2">
                                     @csrf
                                     <input type="hidden" name="type" value="enderecos">
                                     <input type="hidden" name="address_id" value="{{$address->id}}">
@@ -65,7 +65,7 @@
         @endif
 
         @if ($url == 'transportes')
-            <form action="{{asset('atualizarPagamento')}}" method="post">
+            <form action="{{url('atualizarPagamento')}}" method="post">
                 @csrf
                 <input type="hidden" name="type" value="transportes">
                 <input type="hidden" name="preparation_time_final" value="{{$preparation_time_final}}" >
