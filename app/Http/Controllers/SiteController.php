@@ -245,7 +245,7 @@ class SiteController extends Controller
                 $address = Address::where('id', $address_id)->first();
             break;
         }
-        return view('site.indexPagamento', compact('url' ,'addresses', 'address', 'transportadoras', 'preparation_time_final'));
+        return view('site.IndexPagamento', compact('url' ,'addresses', 'address', 'transportadoras', 'preparation_time_final'));
     }
 
     public function atualizarPagamento(Request $request)
