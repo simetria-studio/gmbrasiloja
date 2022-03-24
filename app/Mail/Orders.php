@@ -49,7 +49,7 @@ class Orders extends Mailable
 
         $orders = Order::where('order_number', $this->order_number)->with(['orderProducts', 'shippingCustomer', 'paymentOrder'])->first();
 
-        return $this->markdown('emails.orders')->with([
+        return $this->markdown('emails.orders')->subject('Pedidos')->from('contato@arqplann.com.br', 'GMBRASILVD')->with([
             'order_number' => $this->order_number,
             'orders' => $orders,
             'msg1' => $msg1

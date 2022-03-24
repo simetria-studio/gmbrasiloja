@@ -39,6 +39,7 @@ class PaymentController extends Controller
         $transport = session('transport');
 
         if (empty(session()->get('order_number'))) {
+        // if (true) {
             $order_number = Order::max('order_number');
             $this->order_number = $order_number = str_pad(($order_number + 1), 8, "0", STR_PAD_LEFT);
             session(['order_number' => $order_number]);
@@ -55,8 +56,8 @@ class PaymentController extends Controller
                 'cost_freight' => $transport['price'],
                 'product_value' => cart_show()->total,
                 'discount' => (cart_show()->original_value - cart_show()->total),
-                'coupon_value' => session()->get('coupon')['desconto'],
-                'coupon' => session()->get('coupon')['coupon'],
+                'coupon_value' => session()->get('coupon')['desconto'] ?? null,
+                'coupon' => session()->get('coupon')['coupon'] ?? null,
                 'pay' => 0
             ]);
 
@@ -115,7 +116,7 @@ class PaymentController extends Controller
                     'note' => $content->attributes->note,
                 ]);
             }
-
+            \Log::info($address);
             // Criando os dados da entrega
             $shipping_customer = ShippingCustomer::create([
                 'order_number' => $order_number,
@@ -132,8 +133,6 @@ class PaymentController extends Controller
                 'price' => $transport['price'],
                 'time' => $transport['time'],
             ]);
-
-
         } else {
             $this->order_number = $order_number = session()->get('order_number');
         }
@@ -170,7 +169,7 @@ class PaymentController extends Controller
 
         // Envio de emails
         Mail::to(auth()->user()->email)->send(new Orders($order_number, 'comprador'));
-        Mail::to('ellernetpar@gmail.com')->send(new Orders($order_number, 'vendedor'));
+        Mail::to('felipephplow@gmail.com')->send(new Orders($order_number, 'vendedor'));
 
         session()->forget('order_number');
         session()->forget('address_id');
@@ -200,7 +199,7 @@ class PaymentController extends Controller
 
             if (!empty($orders->user_email)) {
                 Mail::to($orders->user_email)->send(new OrderPayment($orders, 'canceled', 'comprador'));
-                Mail::to('ellernetpar@gmail.com')->send(new OrderPayment($orders, 'canceled', 'preservando'));
+                Mail::to('felipephplow@gmail.com')->send(new OrderPayment($orders, 'canceled', 'preservando'));
                 User::whereIn('id', json_decode($orders->coupon->user_id))->get()->each(function ($query) {
                     Mail::to($query->email)->send(new OrderPayment($orders, 'canceled', 'afiliado'));
                 });
