@@ -67,7 +67,7 @@
                                                         $images         = Storage::get($image->image_name);
                                                         $mime_types     = Storage::mimeType($image->image_name);
                                                         $images         = 'data:'.$mime_types.';base64,'.base64_encode($images);
-    
+
                                                         // Adiconando a um array para depois ser utilizados
                                                         $data_images[] = [
                                                             'sequence'  => $image->sequence,
@@ -155,10 +155,10 @@
                         <div class="tab-content" id="newProduct-tabContent">
                             <div class="tab-pane fade show active" id="newProduct-dadosgerais" role="tabpanel" aria-labelledby="newProduct-dadosgerais-tab">
                                 <div class="form-row my-1">
-                                    <div class="form-group col-12 col-md-2">
+                                    {{-- <div class="form-group col-12 col-md-2">
                                         <label for="code">Codigo</label>
                                         <input type="text" name="code" class="form-control form-control-sm" placeholder="Codigo do Produto">
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group col-12 col-md-4">
                                         <label for="name">Nome</label>
                                         <input type="text" name="name" class="form-control form-control-sm" placeholder="Nome do Produto">
@@ -179,9 +179,9 @@
                                         <label for="sales_unit">Unidade de Venda</label>
                                         <select name="sales_unit" class="form-control form-control-sm select2">
                                             <option value=""> - Selecione um Opção - </option>
-                                            <option value="P">Peça</option>
-                                            <option value="M">Metro</option>
-                                            <option value="MQ">Metro Quadrado</option>
+                                            <option value="P">Produto</option>
+                                            <option value="M">Curso</option>
+                                            <option value="MQ">Serviço</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-12 col-md-3">
@@ -189,11 +189,11 @@
                                         <select name="product_type" class="form-control form-control-sm select2">
                                             <option value=""> - Selecione um Opção - </option>
                                             <option value="simples">Simples</option>
-                                            <option value="variacoes">Variações</option>
+
                                         </select>
                                     </div>
                                 </div>
-
+{{--
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-2">
                                         <label for="weight">Peso (kg)</label>
@@ -211,9 +211,9 @@
                                         <label for="length">Comprimento (cm)</label>
                                         <input type="text" name="length" class="form-control form-control-sm" placeholder="Comprimento do Produto">
                                     </div>
-                                </div>
-        
-                                <div class="form-row my-1">
+                                </div> --}}
+
+                                {{-- <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-4">
                                         <div class="icheck-primary">
                                             <input type="checkbox" id="has_preparation_check" class="has_preparation">
@@ -225,8 +225,8 @@
                                         <label for="preparation_time">Dias</label>
                                         <input type="text" class="form-control form-control-sm" name="preparation_time">
                                     </div>
-                                </div>
-        
+                                </div> --}}
+
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-3">
                                         <label for="main_category">Categoria Principal</label>
@@ -236,7 +236,7 @@
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
                                         </select>
-        
+
                                         <div class="mt-1">
                                             <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Categoria</button>
                                         </div>
@@ -244,7 +244,7 @@
                                     <div class="form-group col-12 col-md-3">
                                         <label for="sub_category">Sub Categoria</label>
                                         <select name="sub_category[]" class="form-control form-control-sm select2 sub_category" multiple></select>
-        
+
                                         <div class="mt-1 d-none">
                                             <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Sub Categoria</button>
                                         </div>
@@ -337,7 +337,7 @@
                                             <input name="img_principal" type="file" class="custom-file-input img_principal">
                                             <label class="custom-file-label" for="img_principal">Foto Principal</label>
                                         </div>
-        
+
                                         <div class="my-2 img-principal"></div>
                                     </div>
                                     <div class="form-group col-12 col-md-6">
@@ -345,7 +345,7 @@
                                             <input name="img_multipla[]" type="file" class="custom-file-input img_multipla" multiple>
                                             <label class="custom-file-label" for="img_multipla">Multiplas Fotos</label>
                                         </div>
-        
+
                                         <div class="my-2 img-multipla"></div>
                                     </div>
                                 </div>
@@ -437,7 +437,7 @@
                                         </select>
                                     </div>
                                 </div>
-        
+
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-2">
                                         <label for="weight">Peso (kg)</label>
@@ -456,7 +456,7 @@
                                         <input type="text" name="length" class="form-control form-control-sm" placeholder="Comprimento do Produto">
                                     </div>
                                 </div>
-        
+
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-4">
                                         <div class="icheck-primary">
@@ -470,7 +470,7 @@
                                         <input type="text" class="form-control form-control-sm" name="preparation_time">
                                     </div>
                                 </div>
-        
+
                                 <div class="form-row my-1">
                                     <div class="form-group col-12 col-md-3">
                                         <label for="main_category">Categoria Principal</label>
@@ -480,7 +480,7 @@
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
                                         </select>
-        
+
                                         <div class="mt-1">
                                             <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Categoria</button>
                                         </div>
@@ -488,7 +488,7 @@
                                     <div class="form-group col-12 col-md-3">
                                         <label for="sub_category">Sub Categoria</label>
                                         <select name="sub_category[]" class="form-control form-control-sm select2 sub_category" multiple></select>
-        
+
                                         <div class="mt-1 d-none">
                                             <button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#novaCategoria"><i class="fas fa-plus"></i> Nova Sub Categoria</button>
                                         </div>
@@ -581,7 +581,7 @@
                                             <input name="img_principal" type="file" class="custom-file-input img_principal">
                                             <label class="custom-file-label" for="img_principal">Foto Principal</label>
                                         </div>
-        
+
                                         <div class="my-2 img-principal"></div>
                                     </div>
                                     <div class="form-group col-12 col-md-6">
@@ -589,7 +589,7 @@
                                             <input name="img_multipla[]" type="file" class="custom-file-input img_multipla" multiple>
                                             <label class="custom-file-label" for="img_multipla">Multiplas Fotos</label>
                                         </div>
-        
+
                                         <div class="my-2 img-multipla"></div>
                                     </div>
                                 </div>

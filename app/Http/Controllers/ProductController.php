@@ -24,6 +24,7 @@ class ProductController extends Controller
 
     public function novoProduto(Request $request)
     {
+        $code = rand(10000, 99999);
         $request->validate([
             'code'              => 'unique:products',
             'name'              => 'required|string',
@@ -35,7 +36,7 @@ class ProductController extends Controller
 
         $originalPath = storage_path('/app/product_image/');
 
-        $products['code']               = $request->code;
+        $products['code']               = $code;
         $products['name']               = mb_convert_case($request->name, MB_CASE_TITLE);
         $products['brief_description']  = $request->brief_description;
         $products['sales_unit']         = $request->sales_unit;
@@ -106,9 +107,9 @@ class ProductController extends Controller
                     $img_multipla = Image::make($for_img_multipla)->resize($width_max, $height_max);
                     $img_name_m = Str::random().'.'.$for_img_multipla->extension();
                     $img_multipla->save($originalPath.$img_name_m);
-                    
+
                     $count_sequence = ProductImage::where('product_id', $products->id)->orderByDesc('sequence')->first();
-                    
+
                     $create_img_multipla['product_id'] = $products->id;
                     $create_img_multipla['sequence']   = ($count_sequence->sequence + 1);
                     $create_img_multipla['image_name'] = 'product_image/'.$img_name_m;
@@ -168,7 +169,7 @@ class ProductController extends Controller
 
         $originalPath = storage_path('/app/product_image/');
 
-        $products['code']               = $request->code;
+        // $products['code']               = $request->code;
         $products['name']               = mb_convert_case($request->name, MB_CASE_TITLE);
         $products['brief_description']  = $request->brief_description;
         $products['sales_unit']         = $request->sales_unit;
@@ -217,7 +218,7 @@ class ProductController extends Controller
             $img_principal = Image::make($request->img_principal)->resize($width_max, $height_max);
             $img_name = Str::random().'.'.$request->img_principal->extension();
             $img_principal->save($originalPath.$img_name);
-            
+
             $img_update_principal = ProductImage::where('product_id', $request->id)->where('sequence', '1')->first();
             Storage::delete($img_update_principal->image_name);
 
@@ -234,7 +235,7 @@ class ProductController extends Controller
 
             foreach($request->img_multipla as $for_img_multipla){
                 $count_sequence = ProductImage::where('product_id', $request->id)->orderByDesc('sequence')->first();
-                
+
                 $width_max = 420;
                 $height_max = 480;
 
@@ -286,7 +287,7 @@ class ProductController extends Controller
             $images         = Storage::get($imgjson->image_name);
             $mime_types     = Storage::mimeType($imgjson->image_name);
             $images         = 'data:'.$mime_types.';base64,'.base64_encode($images);
-    
+
             // Adiconando a um array para depois ser utilizados
             $data_images[] = [
                 'sequence'  => $imgjson->sequence,
