@@ -9,7 +9,7 @@
                 <br />
 
                 <p><strong>Whatsapp:</strong></p>
-                <p>((11) 93361-9920</p>
+                <p>(11) 93361-9920</p>
                 <br />
 
                 <p><strong>E-mail:</strong></p>
