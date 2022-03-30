@@ -295,13 +295,13 @@
                         <h4 class="contato-titulo"><strong>CONTATO</strong></h4>
                         <ul class="nav flex-column col-contato">
                             <li class="nav-item">TELEFONES:</li>
-                            <li class="nav-item">(41) 9999-9999</li>
-                            <li class="nav-item">(41) 99999-9999</li>
+                            <li class="nav-item">(11) 99659-2837</li>
+                            <li class="nav-item">(11) 93361-9920</li>
                         </ul>
 
                         <ul class="nav flex-column col-contato">
                             <li class="nav-item">EMAIL:</li>
-                            <li class="nav-item">contato@gmbrasilvd.com.br</li>
+                            <li class="nav-item">gmbrasiloportunidades@gmail.com</li>
                         </ul>
                     </div>
 
