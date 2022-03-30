@@ -9,11 +9,11 @@
                 <br />
 
                 <p><strong>Whatsapp:</strong></p>
-                <p>(41) 9 9999-9999</p>
+                <p>((11) 93361-9920</p>
                 <br />
 
                 <p><strong>E-mail:</strong></p>
-                <p>contato@contato.com.br</p>
+                <p>gmbrasiloportunidades@gmail.com</p>
                 <br />
 
                 <p><strong>Endereço</strong></p>
