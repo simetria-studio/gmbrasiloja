@@ -66,7 +66,7 @@
                     </div>
                     <div class="mt-auto">
                         <div class="titulo-produto">
-                            <h5>{{ mb_convert_case($product->name, MB_CASE_UPPER) }}</h5>
+                            <h5>{{ mb_convert_case($product->name, MB_CASE_UPPER) }} - {{ mb_convert_case($product->brief_description, MB_CASE_UPPER) }}</h5>
                         </div>
                         {{-- <div class="star-produto">
                             <i class="fas fa-star"></i>
@@ -84,7 +84,7 @@
                                 <div class="values"><span class="value-1">R$
                                         {{ number_format($product->value, 2, ',', '.') }}</span> <span
                                         class="value-2">R$
-                                        {{ number_format($getPricePromotion['value'], 2, ',', '.') }} 
+                                        {{ number_format($getPricePromotion['value'], 2, ',', '.') }}
                                        </span>
                                 </div>
                             </div>
