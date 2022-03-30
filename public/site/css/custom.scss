@@ -526,10 +526,11 @@ body {
 /* PRODUTO */
 .produto .img-produto img {
     width: 70%;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid #ddddf1;
     border-radius: 0.25rem;
     padding: 5px;
     background-color: #fff;
+    object-fit: none;
 }
 
 .produto .preco-promocao .porcent {
@@ -560,6 +561,13 @@ body {
 .produto .botao-produto a {
     color: #fff;
     background-color: #00423d;
+    padding: 10px 25px;
+    border-radius: 2rem;
+    text-decoration: none;
+}
+.produto .botao-produto a:hover {
+    color: #fff;
+    background-color: rgb(8, 140, 180);
     padding: 10px 25px;
     border-radius: 2rem;
 }
