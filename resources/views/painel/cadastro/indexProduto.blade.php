@@ -189,7 +189,7 @@
                                         <select name="product_type" class="form-control form-control-sm select2">
                                             <option value=""> - Selecione um Opção - </option>
                                             <option value="simples">Simples</option>
-
+                                            <option value="variacoes">Variações</option>
                                         </select>
                                     </div>
                                 </div>
